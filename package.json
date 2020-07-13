@@ -1,33 +1,62 @@
 {
-  "main": "index.js",
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "web": "expo start --web",
-    "start": "react-native start",
-    "test": "jest"
-  },
-  "dependencies": {
-    "expo": "~37.0.3",
-    "expo-splash-screen": "^0.2.3",
-    "expo-updates": "~0.2.0",
-    "react": "~16.9.0",
-    "react-dom": "~16.9.0",
-    "react-native": "~0.61.5",
-    "react-native-gesture-handler": "~1.6.0",
-    "react-native-reanimated": "~1.7.0",
-    "react-native-screens": "~2.2.0",
-    "react-native-unimodules": "~0.9.0",
-    "react-native-web": "~0.11.7"
-  },
-  "devDependencies": {
-    "@babel/core": "~7.9.0",
-    "babel-jest": "~25.2.6",
-    "jest": "~25.2.6",
-    "react-test-renderer": "~16.9.0"
-  },
-  "jest": {
-    "preset": "react-native"
-  },
-  "private": true
+    "scripts": {
+        "android": "react-native run-android",
+        "ios": "react-native run-ios",
+        "web": "expo start --web",
+        "start": "react-native start",
+        "test": "jest",
+        "set-owner": "adb shell dpm set-device-owner com.saibotd.kiddiehub/com.rnlocktask.MyAdmin",
+        "build-release": "mkdir -vp android/app/src/main/assets/debug && react-native bundle --dev false --platform android --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res && rm -rf android/app/src/main/res/drawable-*/assets_* && rm -rf android/app/src/main/res/drawable-*/node_modules_* && rm -rf android/app/src/main/res/raw && cd android && ./gradlew assembleRelease",
+        "uninstall": "adb uninstall com.saibotd.kiddiehub",
+        "install": "react-native run-android --variant=release"
+    },
+    "dependencies": {
+        "@react-native-community/async-storage": "^1.11.0",
+        "@react-native-community/cli-platform-android": "^4.10.1",
+        "@react-native-community/netinfo": "^5.9.4",
+        "@react-native-community/toolbar-android": "0.1.0-rc.2",
+        "@react-native-community/viewpager": "^4.0.1",
+        "axios": "^0.19.2",
+        "babel-preset-expo": "^8.2.3",
+        "buffer": "^5.6.0",
+        "lodash": "^4.17.15",
+        "natsort": "^2.0.2",
+        "react": "~16.9.0",
+        "react-dom": "~16.9.0",
+        "react-native": "~0.61.5",
+        "react-native-android-installed-apps": "github:ManuelAgustinLucero/react-native-android-installed-apps",
+        "react-native-android-intent-launcher": "^0.3.0",
+        "react-native-android-open-settings": "^1.3.0",
+        "react-native-background-actions": "^2.2.0",
+        "react-native-battery": "^0.1.18",
+        "react-native-device-info": "^5.6.1",
+        "react-native-easy-router": "^3.1.1",
+        "react-native-file-picker": "0.0.19",
+        "react-native-fs": "^2.16.6",
+        "react-native-gesture-handler": "~1.6.0",
+        "react-native-lock-task": "github:saibotd/react-native-lock-task",
+        "react-native-modal": "^11.5.6",
+        "react-native-reanimated": "~1.7.0",
+        "react-native-screens": "~2.2.0",
+        "react-native-settings-list": "^1.8.0",
+        "react-native-super-grid": "^4.0.2",
+        "react-native-svg": "^12.1.0",
+        "react-native-svg-transformer": "^0.14.3",
+        "react-native-track-player": "^1.2.3",
+        "react-native-unimodules": "~0.9.0",
+        "react-native-vector-icons": "^6.7.0",
+        "react-native-virtual-keyboard": "^1.1.0",
+        "react-native-web": "~0.11.7",
+        "uuid": "^3.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "~7.9.0",
+        "babel-jest": "~25.2.6",
+        "jest": "~25.2.6",
+        "react-test-renderer": "~16.9.0"
+    },
+    "jest": {
+        "preset": "react-native"
+    },
+    "private": true
 }

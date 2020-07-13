@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">KiddyHub</string>
+    <string name="app_name">KiddieHub</string>
+       <string name="sample_device_admin">KiddieHub</string>
+  <string name="sample_device_admin_description">KiddieHub</string>
 </resources>
