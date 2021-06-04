@@ -19,29 +19,29 @@ const loadMedia = async () => {
 */
 
 export default () => {
-    const [ready, setReady] = React.useState(false);
-    React.useEffect(() => {
-        initConfig().then(({ rootPath, useServer }) => {
-            initFs(rootPath).then(() => setReady(true));
-        });
-        //loadMedia();
-        return () => {};
-    }, []);
-    if (!ready) return null;
-    return (
-        <View style={{ flex: 1 }}>
-            <StateProvider>
-                <Navigator
-                    initialStack="HomeView"
-                    screens={{
-                        HomeView,
-                        ExplorerView,
-                        AudioPlayerView,
-                        SettingsView,
-                        ChatView,
-                    }}
-                />
-            </StateProvider>
-        </View>
-    );
+  const [ready, setReady] = React.useState(false);
+  React.useEffect(() => {
+    initConfig().then(({ rootPath, useServer }) => {
+      initFs(rootPath).then(() => setReady(true));
+    });
+    //loadMedia();
+    return () => {};
+  }, []);
+  if (!ready) return null;
+  return (
+    <View style={{ flex: 1 }}>
+      <StateProvider>
+        <Navigator
+          initialStack="HomeView"
+          screens={{
+            HomeView,
+            ExplorerView,
+            AudioPlayerView,
+            SettingsView,
+            ChatView,
+          }}
+        />
+      </StateProvider>
+    </View>
+  );
 };

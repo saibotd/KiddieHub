@@ -26,14 +26,15 @@ export default ({ navigator }) => {
         return () => unsubscribe();
     }, []);
     React.useEffect(() => {
-        const appsWhitelist = [
+        const appAllowlist = [
             "com.saibotd.kiddiehub",
+            "com.google.android.inputmethod.latin",
             ...menuItems
                 .filter(({ type }) => type == "app")
                 .map(({ value }) => value),
         ];
         try {
-            RNLockTask.startLockTaskWith(appsWhitelist);
+            RNLockTask.startLockTaskWith(appAllowlist);
         } catch (e) {}
         RNAndroidInstalledApps.getApps()
             .then((apps) => {

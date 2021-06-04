@@ -9,13 +9,16 @@ import {
     Text,
     TextInput,
     TouchableNativeFeedback,
+    NativeEventEmitter,
+    NativeModules,
     View,
 } from "react-native";
 import DeviceInfo from "react-native-device-info";
 import { v4 as uuidv4 } from "uuid";
 import global from "./global";
 import { SendIcon } from "./Icon";
-import { initServer, port, scan, stopServer } from "./Server";
+//import { initServer, port, scan, stopServer } from "./Server";
+import WifiChat from "./WifiChat";
 
 const avatars = [
     "🤡",
@@ -44,8 +47,12 @@ const getChatLog = () => {
 };
 
 export default ({ navigator }) => {
+    const eventEmitter = new NativeEventEmitter(NativeModules.WifiChat);
+    const eventListener = eventEmitter.addListener("peerReceived", (event) => {
+        console.warn({ peer: event });
+        WifiChat.connect(event.address);
+    });
     const serviceName = `KiddieHub.${DeviceInfo.getUniqueId()}`;
-    const [peers, setPeers] = React.useState([]);
     const [message, setMessage] = React.useState("");
     const [chatLog, setChatLog] = React.useState(getChatLog());
     const [avatar, setAvatar] = React.useState(
@@ -59,12 +66,18 @@ export default ({ navigator }) => {
         interval = setInterval(() => {
             setChatLog(getChatLog());
         }, 250);
-        scan();
         return () => clearInterval(interval);
     }, []);
     React.useEffect(() => {
-        initServer();
-        return () => stopServer();
+        WifiChat.init().then(async (re) => {
+            console.warn(re);
+            await WifiChat.startService();
+            await WifiChat.discover();
+        });
+        return () => {
+            eventListener.remove();
+            WifiChat.release();
+        };
     }, []);
     React.useEffect(() => {
         global.avatar = avatar;
@@ -143,22 +156,7 @@ export default ({ navigator }) => {
                             uuid,
                             message,
                         };
-                        for (const ip of global.chatPeers) {
-                            console.log(`http://${ip}:${port}`);
-                            axios
-                                .post(`http://${ip}:${port}/chat_receive`, data)
-                                .then(({ data }) => {
-                                    console.log(data);
-                                })
-                                .catch((e) => {
-                                    console.log(e);
-                                    global.chatPeers = without(
-                                        global.chatPeers,
-                                        ip
-                                    );
-                                });
-                        }
-                        setMessage("");
+
                         //scan();
                     }}
                 >
