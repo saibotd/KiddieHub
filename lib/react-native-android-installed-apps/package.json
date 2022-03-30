@@ -1,0 +1,57 @@
+{
+  "_from": "github:ManuelAgustinLucero/react-native-android-installed-apps",
+  "_id": "react-native-android-installed-apps@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/react-native-android-installed-apps",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "github:ManuelAgustinLucero/react-native-android-installed-apps",
+    "rawSpec": "github:ManuelAgustinLucero/react-native-android-installed-apps",
+    "saveSpec": "github:ManuelAgustinLucero/react-native-android-installed-apps",
+    "fetchSpec": null,
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "github:ManuelAgustinLucero/react-native-android-installed-apps#18dc70d9be14a72ef1c476b1e58d32fa5bb1624a",
+  "_spec": "github:ManuelAgustinLucero/react-native-android-installed-apps",
+  "_where": "/home/saibotd/Projects/KiddyHub",
+  "author": {
+    "name": "Ayman Alaiwah",
+    "email": "aymanalaiwah.dev@gmail.com",
+    "url": "https://github.com/progaymanalaiwah/react-native-android-installed-apps"
+  },
+  "bugs": {
+    "url": "https://github.com/progaymanalaiwah/react-native-android-installed-apps/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "API to retrieve installed  apps information  using native built-ins",
+  "homepage": "https://github.com/progaymanalaiwah/react-native-android-installed-apps#readme",
+  "keywords": [
+    "react-native",
+    "android",
+    "installed",
+    "apps",
+    "packeges",
+    "applications"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "react-native-android-installed-apps",
+  "peerDependencies": {
+    "react-native": "^0.63.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/progaymanalaiwah/react-native-android-installed-apps.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
